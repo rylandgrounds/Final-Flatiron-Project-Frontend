@@ -6,6 +6,10 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import store from "./redux/store.js"
+import {fetchCountries} from './features/CountryCard/countriesSlice'
+
+store.dispatch(fetchCountries())
+
 ReactDOM.render(
   <Router>
     <Provider store={store}>

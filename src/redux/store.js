@@ -1,8 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit'
-import countryCardReducer from '/Users/rylandgrounds/Development/projects/final_project/final-project-frontend/src/features/CountryCard/countryCardSlice.js';
+import countriesReducer from '../features/CountryCard/countriesSlice.js';
+import articlesReducer from '/Users/rylandgrounds/Development/projects/final_project/final-project-frontend/src/features/ArticleCard/articlesSlice.js'
+
 const store = configureStore({
 reducer:{
-    countryCard: countryCardReducer
+    countries: countriesReducer,
+    articles: articlesReducer
 }
 
 })
