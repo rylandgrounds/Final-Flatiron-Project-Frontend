@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -8,10 +9,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
+import { fetchArticles } from "../ArticleCard/articlesSlice.js";
 import store from "/Users/rylandgrounds/Development/projects/final_project/final-project-frontend/src/redux/store.js";
-import { fetchArticles } from "/Users/rylandgrounds/Development/projects/final_project/final-project-frontend/src/features/ArticleCard/articlesSlice.js";
-
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -25,6 +24,9 @@ export default function CountryCard({ country }) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  function handleOnArticleClick () {
+    store.dispatch(fetchArticles(`https://newsapi.org/v2/top-headlines?q=corona&country=${country.CountryCode}&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`))
+  }
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -55,20 +57,8 @@ export default function CountryCard({ country }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => {
-            dispatch(
-              fetchArticles(
-                `https://newsapi.org/v2/top-headlines?q=corona&country=${country.CountryCode}&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
-              )
-            );
-          }}
-          component={country}
-          to="/articles"
-        >
-          News Articles for: {country.Country}
+        <Button variant="contained" color="primary" onClick={handleOnArticleClick} component={RouterLink} to="/articles">
+         News Articles for {country.CountryCode}
         </Button>
       </CardActions>
     </Card>

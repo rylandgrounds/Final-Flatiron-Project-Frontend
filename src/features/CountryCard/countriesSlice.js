@@ -21,7 +21,5 @@ export const countriesSlice = createSlice({
   },
 });
 
-export const { countries } = countriesSlice.actions;
-
-export const selectCountries = (state) => state.countryCard.countries;
+export const {countries} = countriesSlice.actions;
 export default countriesSlice.reducer;
