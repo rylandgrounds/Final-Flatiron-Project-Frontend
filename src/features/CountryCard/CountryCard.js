@@ -24,8 +24,12 @@ export default function CountryCard({ country }) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  function handleOnArticleClick () {
-    store.dispatch(fetchArticles(`https://newsapi.org/v2/top-headlines?q=corona&country=${country.CountryCode}&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`))
+  function handleOnArticleClick() {
+    store.dispatch(
+      fetchArticles(
+        `https://newsapi.org/v2/top-headlines?q=corona&country=${country.CountryCode}&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
+      )
+    );
   }
   return (
     <Card className={classes.root}>
@@ -57,8 +61,14 @@ export default function CountryCard({ country }) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button variant="contained" color="primary" onClick={handleOnArticleClick} component={RouterLink} to="/articles">
-         News Articles for {country.CountryCode}
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleOnArticleClick}
+          component={RouterLink}
+          to="/articles"
+        >
+          News Articles for {country.CountryCode}
         </Button>
       </CardActions>
     </Card>

@@ -10,6 +10,7 @@ import { fetchCountries } from "./features/CountryCard/countriesSlice";
 import { fetchArticlesFromBack } from "./features/ArticleCard/articlesSlice";
 
 store.dispatch(fetchCountries());
+store.dispatch(fetchArticlesFromBack());
 ReactDOM.render(
   <Router>
     <Provider store={store}>

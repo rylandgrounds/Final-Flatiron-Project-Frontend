@@ -3,10 +3,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchCountries = createAsyncThunk(
   "countries/fetchCountries",
   async () => {
-   const response = await fetch("https://api.covid19api.com/summary")
+    const response = await fetch("https://api.covid19api.com/summary")
       .then((res) => res.json())
       .then((res) => res.Countries);
-      return response
+    return response;
   }
 );
 
@@ -16,10 +16,10 @@ export const countriesSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchCountries.fulfilled]: (state, action) => {
-      return action.payload
+      return action.payload;
     },
   },
 });
 
-export const {countries} = countriesSlice.actions;
+export const { countries } = countriesSlice.actions;
 export default countriesSlice.reducer;

@@ -1,5 +1,5 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -10,9 +10,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import store from "/Users/rylandgrounds/Development/projects/final_project/final-project-frontend/src/redux/store.js";
 import { fetchCountries } from "../CountryCard/countriesSlice";
-import {postArticle} from "./articlesSlice.js";
+import { postArticle } from "./articlesSlice.js";
 import { Link as RouterLink } from "react-router-dom";
-
 
 const useStyles = makeStyles({
   root: {
@@ -26,12 +25,12 @@ const useStyles = makeStyles({
 export default function ArticleCard({ article }) {
   const classes = useStyles();
   const dispatch = useDispatch();
-  
-  function handleOnCountryClick () {
-    store.dispatch(fetchCountries("https://api.covid19api.com/summary"))
+
+  function handleOnCountryClick() {
+    store.dispatch(fetchCountries("https://api.covid19api.com/summary"));
   }
-  function handleOnSaveClick () {
-    dispatch(postArticle(article))
+  function handleOnSaveClick() {
+    dispatch(postArticle(article));
   }
   return (
     <Card className={classes.root}>
@@ -47,19 +46,30 @@ export default function ArticleCard({ article }) {
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             <br></br>
-                Article Description: {article.description}
-            </Typography>
+            Article Description: {article.description}
+          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button variant="contained" color="primary" onClick={handleOnCountryClick} component={RouterLink} to="/">
-         Country Page
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleOnCountryClick}
+          component={RouterLink}
+          to="/"
+        >
+          Country Page
         </Button>
-        <Button variant="contained" color="primary" onClick={handleOnSaveClick}>
-         Save It!
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleOnSaveClick}
+          component={RouterLink}
+          to="/"
+        >
+          Save It!
         </Button>
       </CardActions>
     </Card>
   );
 }
-

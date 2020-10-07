@@ -3,10 +3,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchArticlesFromBack = createAsyncThunk(
   "articles/fetchArticlesFromBack",
   async () => {
-   const response = await fetch("http://localhost:3000/articles")
+    const response = await fetch("http://localhost:3000/articles")
       .then((res) => res.json())
       .then((res) => res.data);
-      return response
+    return response;
   }
 );
 export const fetchArticles = createAsyncThunk(
@@ -21,7 +21,7 @@ export const fetchArticles = createAsyncThunk(
 
 export const postArticle = createAsyncThunk(
   "articles/postArticle",
-    async (article)=> {
+  async (article) => {
     const configObj = {
       method: "POST",
       headers: {
@@ -30,7 +30,7 @@ export const postArticle = createAsyncThunk(
       },
       body: JSON.stringify(article),
     };
-     fetch("http://localhost:3000/articles", configObj)
+    fetch("http://localhost:3000/articles", configObj)
       .then((res) => res.json())
       .then((res) => res);
   }
@@ -38,20 +38,21 @@ export const postArticle = createAsyncThunk(
 
 export const articlesSlice = createSlice({
   name: "articles",
-  initialState: null,
+  initialState: [],
   reducers: {
     [postArticle.fulfilled]: (state, action) => {
       return action.payload;
-    }
+    },
   },
   extraReducers: {
     [fetchArticles.fulfilled]: (state, action) => {
-      return action.payload;
-      
-    },  [fetchArticlesFromBack.fulfilled]: (state, action) => {
-      return action.payload;
-  }
-}});
+      state.push(action.payload);
+    },
+    [fetchArticlesFromBack.fulfilled]: (state, action) => {
+      state.push(action.payload);
+    },
+  },
+});
 
 export const { articles } = articlesSlice.actions;
 export default articlesSlice.reducer;
