@@ -8,8 +8,10 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import store from "/Users/rylandgrounds/Development/projects/final_project/final-project-frontend/src/redux/store.js"
+import { Link } from "react-router-dom";
+import store from "/Users/rylandgrounds/Development/projects/final_project/final-project-frontend/src/redux/store.js";
 import { fetchArticles } from "/Users/rylandgrounds/Development/projects/final_project/final-project-frontend/src/features/ArticleCard/articlesSlice.js";
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -19,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CountryCard({country}) {
+export default function CountryCard({ country }) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -53,7 +55,19 @@ export default function CountryCard({country}) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={store.dispatch(fetchArticles(country.CountryCode))} >
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            dispatch(
+              fetchArticles(
+                `https://newsapi.org/v2/top-headlines?q=corona&country=${country.CountryCode}&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
+              )
+            );
+          }}
+          component={country}
+          to="/articles"
+        >
           News Articles for: {country.Country}
         </Button>
       </CardActions>

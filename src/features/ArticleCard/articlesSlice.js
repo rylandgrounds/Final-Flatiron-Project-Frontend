@@ -2,10 +2,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchArticles = createAsyncThunk(
   "articles/fetchArticles",
-  async () => {
-   const response = await fetch("")
+  async (url) => {
+   const response = await fetch(url)
       .then((res) => res.json())
-      .then((res) => res);
+      .then((res) => res.articles)
       return response
   }
 );
@@ -13,7 +13,9 @@ export const fetchArticles = createAsyncThunk(
 export const articlesSlice = createSlice({
   name: "articles",
   initialState: null,
-  reducers: {},
+  reducers: {
+
+  },
   extraReducers: {
     [fetchArticles.fulfilled]: (state, action) => {
       return action.payload
