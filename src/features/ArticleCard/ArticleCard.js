@@ -58,7 +58,7 @@ export default function ArticleCard({ article }) {
           color="primary"
           onClick={handleOnCountryClick}
           component={RouterLink}
-          to="/"
+          to="/countries"
         >
           Country Page
         </Button>
@@ -67,7 +67,7 @@ export default function ArticleCard({ article }) {
           color="primary"
           onClick={handleOnSaveClick}
           component={RouterLink}
-          to="/"
+          to="/countries"
         >
           Save It!
         </Button>

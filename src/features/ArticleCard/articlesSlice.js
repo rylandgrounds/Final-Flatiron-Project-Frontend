@@ -33,13 +33,9 @@ export const postArticle = createAsyncThunk(
       },
       body: JSON.stringify(article),
     };
-    console.log('c')
     fetch("http://localhost:3000/articles", configObj)
       .then((res) => res.json())
-      .then((res) => {
-        console.log('d')
-       return res
-      });
+      .then((res) => res);
   }
 );
 

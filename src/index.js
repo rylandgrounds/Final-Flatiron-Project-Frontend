@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import store from "./redux/store.js";
 import { fetchCountries } from "./features/CountryCard/countriesSlice";
-import { fetchArticlesFromBack } from "./features/ArticleCard/articlesSlice";
 
 store.dispatch(fetchCountries());
 ReactDOM.render(
