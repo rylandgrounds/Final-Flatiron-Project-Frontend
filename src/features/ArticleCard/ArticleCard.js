@@ -30,7 +30,9 @@ export default function ArticleCard({ article }) {
     store.dispatch(fetchCountries("https://api.covid19api.com/summary"));
   }
   function handleOnSaveClick() {
+      console.log('a')
     dispatch(postArticle(article));
+    console.log('b')
   }
   return (
     <Card className={classes.root}>

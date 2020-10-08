@@ -14,7 +14,10 @@ export const fetchArticles = createAsyncThunk(
   async (url) => {
     const response = await fetch(url)
       .then((res) => res.json())
-      .then((res) => res.articles);
+      .then((res) => res.articles)
+      .catch((error)=> {
+        alert(error)
+      })
     return response;
   }
 );
@@ -30,15 +33,19 @@ export const postArticle = createAsyncThunk(
       },
       body: JSON.stringify(article),
     };
+    console.log('c')
     fetch("http://localhost:3000/articles", configObj)
       .then((res) => res.json())
-      .then((res) => res);
+      .then((res) => {
+        console.log('d')
+       return res
+      });
   }
 );
 
 export const articlesSlice = createSlice({
   name: "articles",
-  initialState: [],
+  initialState: null,
   reducers: {
     [postArticle.fulfilled]: (state, action) => {
       return action.payload;
@@ -46,10 +53,10 @@ export const articlesSlice = createSlice({
   },
   extraReducers: {
     [fetchArticles.fulfilled]: (state, action) => {
-      state.push(action.payload);
+      return action.payload;
     },
     [fetchArticlesFromBack.fulfilled]: (state, action) => {
-      state.push(action.payload);
+     return action.payload;
     },
   },
 });

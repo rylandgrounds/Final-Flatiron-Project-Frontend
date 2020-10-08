@@ -1,6 +1,5 @@
-import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -22,8 +21,6 @@ const useStyles = makeStyles({
 
 export default function CountryCard({ country }) {
   const classes = useStyles();
-  const dispatch = useDispatch();
-
   function handleOnArticleClick() {
     store.dispatch(
       fetchArticles(
@@ -70,6 +67,7 @@ export default function CountryCard({ country }) {
         >
           News Articles for {country.CountryCode}
         </Button>
+       
       </CardActions>
     </Card>
   );

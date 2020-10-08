@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 
 export default function ArticleContainer() {
   const articles = useSelector((state) => state.articles);
+
   if (!articles) {
     return <div>Loading...</div>;
   }
