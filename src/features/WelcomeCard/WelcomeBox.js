@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
    
     alignItemsAndJustifyContent: {
       width: 'fill',
-      height: 'fill',
+      height: 'auto',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
