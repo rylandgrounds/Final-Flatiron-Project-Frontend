@@ -9,7 +9,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { fetchArticles } from "../ArticleCard/articlesSlice.js";
-import store from "/Users/rylandgrounds/Development/projects/final_project/final-project-frontend/src/redux/store.js";
+import store from "../../redux/store";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "/Users/rylandgrounds/Development/projects/final_project/final-project-frontend/src/App.js";
+import App from "../src/App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";

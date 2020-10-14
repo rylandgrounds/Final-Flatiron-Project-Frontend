@@ -8,7 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import store from "/Users/rylandgrounds/Development/projects/final_project/final-project-frontend/src/redux/store.js";
+import store from "../../redux/store";
 import { fetchCountries } from "../CountryCard/countriesSlice";
 import { postArticle } from "./articlesSlice.js";
 import { Link as RouterLink } from "react-router-dom";
