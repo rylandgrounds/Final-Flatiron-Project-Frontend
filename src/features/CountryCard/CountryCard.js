@@ -21,6 +21,7 @@ const useStyles = makeStyles({
 
 export default function CountryCard({ country }) {
   const classes = useStyles();
+  debugger
   function handleOnArticleClick() {
     store.dispatch(
       fetchArticles(
@@ -50,7 +51,7 @@ export default function CountryCard({ country }) {
             <br></br>
             Total Confirmed: {country.TotalConfirmed}
             <br></br>
-            Total Deaths: {country.TotalDeath}
+            Total Deaths: {country.TotalDeaths}
             <br></br>
             Total Recovered: {country.TotalRecovered}
             <br></br>
